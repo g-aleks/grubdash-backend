@@ -94,7 +94,7 @@ function hasImg(req, res, next){
     next()
 }
 
-function update(req, res, next){
+function update(req, res){
     let dish = res.locals.dish
     const {dishId} = req.params
     const {data = {}} = req.body

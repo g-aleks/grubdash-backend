@@ -21,15 +21,15 @@ function orderExists(req, res, next){
     next()
 }
 
-function read(req, res, next){
+function read(req, res){
     res.json({data: res.locals.order})
 }
 
-function list(req, res, next){
+function list(req, res){
     res.json({data: orders})
 }
 
-function update(req, res, next){
+function update(req, res){
     let order = res.locals.order
     const {orderId} = req.params
     const {data = {}} = req.body
@@ -42,13 +42,13 @@ function update(req, res, next){
     res.json({data: order})
 }
 
-function destroy(req, res, next){
+function destroy(req, res){
     const index = orders.findIndex((order)=> order.id == res.locals.order.id )
     const deletedOrders = orders.splice(index, 1)
     res.sendStatus(204)
 }
 
-function create(req, res, next){
+function create(req, res){
     const {data: {deliverTo, mobileNumber, status, dishes} = {}} = req.body
     const newOrder = {
         id: nextId(),
